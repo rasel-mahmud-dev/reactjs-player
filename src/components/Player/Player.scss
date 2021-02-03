@@ -1,0 +1,162 @@
+@import './utils.scss';
+
+.player {
+  margin: 10px;
+  width: 400px;
+  background: red;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 1px 0px 6px 1px #414141;
+
+  .video {
+    width: 100%;
+    display: flex;
+  };
+}
+
+
+.controller {
+  background: #2a2828de;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 10px 0px 5px;
+  user-select: none;
+  cursor: initial;
+
+  &.show-controller {
+    transform: translateY(0);
+    @include animation('slide-up .5s ease-in-out')
+  }
+
+  &.hide-controller {
+    transform: translateY(100%);
+    @include animation('slide-down .5s 1')
+  }
+
+  .bar {
+    height: 8px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+  }
+
+  .progress-bar {
+    background: rgba(138, 138, 138, 0.562);
+    width: 100%;
+    height: 3px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      transform: scaleY(2.5);
+      transform-origin: center;
+      transition: all .2s ease-in-out;
+    }
+
+    .seek-bar {
+      width: 0%;
+      height: inherit;
+      display: block;
+      background: rgb(255, 0, 0);
+      position: absolute;
+      top: 0;
+    }
+
+    .seek-bar-overlay {
+      display: block;
+      height: inherit;
+      background: green;
+      position: absolute;
+      left: 0;
+    }
+  }
+
+
+  .buttons {
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    cursor: initial;
+
+    .icon {
+      color: rgb(211, 211, 211);
+      margin-right: 10px;
+      font-size: 13px;
+    }
+
+    .play {
+      cursor: pointer;
+    }
+
+    .forward {
+      cursor: pointer;
+    }
+
+    .backward {
+      cursor: pointer;
+    }
+
+    .volume {
+      cursor: pointer;
+      width: 40px;
+    }
+
+    .time {
+      color: rgb(211, 211, 211)
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      .volume-bar{
+        display: flex;
+      }
+      .elapse-time {
+        color: rgb(211, 211, 211)
+      }
+      .share {
+        cursor: pointer;
+        color: rgb(211, 211, 211)
+      }
+
+      .playback-speed {
+        cursor: pointer;
+        color: rgb(211, 211, 211);
+        font-size: 15px;
+      }
+
+      .fullscreen {
+        cursor: pointer;
+      }
+      .player-setting{
+        cursor: pointer;
+      }
+    }
+
+  }
+}
+
+.player-setting_menu{
+  position: absolute;
+  top: 0;
+  z-index: 12;
+  width: 100px;
+  height: 170px;
+  background: #ffffffd1;
+  right: 0px;
+  box-shadow: 0 0 3px 0px grey;
+  .list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .list-item > :nth-child(1){
+      margin: 0 10px;
+    }
+  }
+}
